@@ -37,5 +37,12 @@ def get_user_by_id(session: SessionType, user_id: int):
         raise HTTPException(status_code=404, detail="User not found")
     return q_user_by_id
 
-
+def update_user_data(session: SessionType, user_id: int, user_in: UserIn) -> User:
+    q_for_upgrade = session.query(User).filter(User.id == user_id).one_or_none()
+    if not q_for_upgrade:
+        raise HTTPException(status_code=404, detail="User not found")
+    for key, value in user_in.dict().items():
+        setattr(q_for_upgrade, key, value)
+    session.commit()
+    return q_for_upgrade
 

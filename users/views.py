@@ -24,3 +24,7 @@ def create_user(user_in: UserIn, session: SessionType = Depends(get_session)):
 @router.get("/{user_id}", response_model=UserOut)
 def get_user_by_id(user_id: int, session: SessionType = Depends(get_session)):
     return crud.get_user_by_id(session, user_id=user_id)
+
+@router.put("/{user_id}")
+def upgrade_user_data(user_id: int, user_in: UserIn, session: SessionType = Depends(get_session)):
+    return crud.update_user_data(session, user_id=user_id, user_in=user_in)
