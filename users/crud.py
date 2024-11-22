@@ -7,6 +7,7 @@ D - Delete
 
 from models import User, SessionType
 from .schemas import UserIn
+from fastapi import HTTPException, status
 
 def fetch_users_by_query(q_users):
     count = q_users.count()
@@ -28,6 +29,13 @@ def create_user(session: SessionType, user_in: UserIn) -> User:
     session.commit()
 
     print("Created_user", user)
-
     return user
+
+def get_user_by_id(session: SessionType, user_id: int):
+    q_user_by_id = session.query(User).filter(User.id == user_id).one_or_none()
+    if not q_user_by_id:
+        raise HTTPException(status_code=404, detail="User not found")
+    return q_user_by_id
+
+
 

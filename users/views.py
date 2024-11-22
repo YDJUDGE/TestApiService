@@ -20,3 +20,7 @@ def list_users(username: str = "", session: SessionType = Depends(get_session)):
 @router.post("", response_model=UserOut, status_code=status.HTTP_201_CREATED)
 def create_user(user_in: UserIn, session: SessionType = Depends(get_session)):
     return crud.create_user(session, user_in=user_in)
+
+@router.get("/{user_id}", response_model=UserOut)
+def get_user_by_id(user_id: int, session: SessionType = Depends(get_session)):
+    return crud.get_user_by_id(session, user_id=user_id)
