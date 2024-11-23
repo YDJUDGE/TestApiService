@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 
 class UserBase(BaseModel):
     username: str = Field(..., example="Ivan Ivanov")
+    email: str = Field(..., example="Exam@ple.com")
 
     class Config:
         from_attributes = True
