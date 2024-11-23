@@ -9,12 +9,12 @@ from . import crud
 
 
 @router.get("", response_model=UserListOut)
-def list_users(username: str = "", session: SessionType = Depends(get_session)):
+def list_users(username: str = "", skip: int = 0, limit: int = 10,  session: SessionType = Depends(get_session)):
     if username:
         users, count = crud.get_user_by_username_part(session, username)
     else:
         users, count = crud.list_users(session)
-    users_out_objects =[UserOut.from_orm(user) for user in users]
+    users_out_objects =[UserOut.from_orm(user) for user in users[skip: skip+ limit]]
     return UserListOut(objects=users_out_objects)
 
 @router.post("", response_model=UserOut, status_code=status.HTTP_201_CREATED)
