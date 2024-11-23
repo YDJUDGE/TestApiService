@@ -15,7 +15,7 @@ def generate_token():
 class User(Base):
     username = Column(String(20), nullable=False, unique=True)
     is_staff = Column(Boolean, default=False, nullable=False)
-    # email = Column(String(100), nullable=False)
+    email = Column(String(100), default="", nullable=True)
 
     token = Column(String, default=lambda: generate_token(), nullable=False, unique=True)
 
@@ -25,6 +25,6 @@ class User(Base):
             f"{self.id}",
             f"{self.username}",
             f"{self.is_staff}",
-            # f"{self.email}"
+            f"{self.email}"
 
         )
