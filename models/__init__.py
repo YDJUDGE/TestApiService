@@ -3,10 +3,12 @@ __all__ = (
     "User",
     "Session",
     "SessionType",
-    "get_session"
+    "get_session",
+    "TimestampMixin"
 )
 
 
 from .base import Base
 from .user import User
 from .db_session import Session, SessionType, get_session
+from .mixins import TimestampMixin
