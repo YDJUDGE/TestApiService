@@ -5,7 +5,9 @@ __all__ = (
     "SessionType",
     "get_session",
     "TimestampMixin",
-    "Order"
+    "Order",
+    "Deparment",
+    "Employee"
 )
 
 
@@ -14,4 +16,6 @@ from .user import User
 from .db_session import Session, SessionType, get_session
 from .mixins import TimestampMixin
 from .order import Order
+from .department import Deparment
+from .employee import Employee
 
