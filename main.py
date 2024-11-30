@@ -5,12 +5,16 @@ from pydantic import constr
 from users.views import router as users_router
 from items_views import router as items_router
 from orders.views import router as router_orders
+from employee.views import router as router_employee
+from department.views import router as router_department
 
 
 app = FastAPI()
 app.include_router(users_router)
 app.include_router(items_router)
 app.include_router(router_orders)
+app.include_router(router_employee)
+app.include_router(router_department)
 
 @app.get("/")
 def root():

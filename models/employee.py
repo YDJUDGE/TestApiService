@@ -16,5 +16,5 @@ class Employee(TimestampMixin, Base):
     name: str = Column(String(255), nullable=False)
     dep_id: int = Column(Integer, ForeignKey("blog_departments.id"), nullable=False, unique=False)
 
-    department = relationship("Deparment", back_populates="employee")
+    department = relationship("Deparment", back_populates="employee", uselist=False)
 

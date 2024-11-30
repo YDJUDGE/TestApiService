@@ -16,7 +16,7 @@ import config
 class Base:
 
     @declared_attr
-    def __tablename__(cls):
+    def __tablename__(cls):  # Автоматическое св-во для генерации таблицы
         """
 
         :return:

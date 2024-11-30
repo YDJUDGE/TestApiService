@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, status, Depends
 
 router = APIRouter(prefix="/users", tags=["USERS"])
 
